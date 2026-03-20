@@ -1,0 +1,65 @@
+#VRML_SIM R2025a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/floors/protos/RectangleArena.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/robots/gctronic/e-puck/protos/E-puck.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/robots/gctronic/e-puck/protos/E-puckGroundSensors.proto"
+
+WorldInfo {
+  info [
+    "This behavior-based controller allows the e-puck robot to follow the black line, avoid obstacles and recover its path afterwards."
+    "This model of the e-puck is equipped with ground sensors, located at the front of the e-puck."
+    "Thanks to Jean-Christophe Zufferey (EPFL-LIS)."
+  ]
+  title "E-Puck"
+  lineScale 0.04
+}
+Viewpoint {
+  orientation 0.18901781700158288 -0.15437412633127648 -0.9697633185346882 4.730031908780092
+  position 0.19845997186317962 -1.1417761085820657 0.6328462588084509
+  follow "e-puck"
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+  rotation 0 0 1 -1.5708
+  floorSize 0.9 0.9
+  floorTileSize 0.9 0.9
+  floorAppearance PBRAppearance {
+    baseColorMap ImageTexture {
+      url [
+        "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/robots/gctronic/e-puck/worlds/textures/floor.png"
+      ]
+    }
+    roughness 0.2
+    metalness 0
+  }
+  wallHeight 0.05
+}
+DEF EPUCK E-puck {
+  hidden position_0_0 5520.789118153077
+  hidden position_0_1 4757.308128466615
+  hidden linearVelocity_0 0.03826308076809304 0.046321021044504175 1.8953003717651886e-08
+  hidden angularVelocity_0 -0.004152033040527427 0.003429751355723771 -5.187189784654539e-10
+  hidden translation_1 0 0.026 0.02
+  hidden rotation_1 0 1 0 4.152418449399816
+  hidden linearVelocity_1 0.03828022922869834 0.04634178078197815 4.213430222676638e-12
+  hidden angularVelocity_1 -2.3170890093086207 1.914011480533014 7.446774425720694e-08
+  hidden translation_2 0 -0.026 0.02
+  hidden rotation_2 0 -1 0 5.346334375511533
+  hidden linearVelocity_2 0.03828022915235002 0.046341780827912876 -3.657651050536913e-12
+  hidden angularVelocity_2 -2.3170890550340904 1.9140114251772151 -7.501819065804901e-08
+  translation -0.1705520887326419 0.11202843387531247 -6.395656647504265e-05
+  rotation -0.00037944033080810404 0.0008055875657232781 0.999999603526776 0.8803772579380273
+  controller "ControladorRobotLab1"
+  controllerArgs [
+    ""
+  ]
+  groundSensorsSlot [
+    E-puckGroundSensors {
+    }
+  ]
+}
