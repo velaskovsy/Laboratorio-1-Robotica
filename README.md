@@ -13,3 +13,6 @@ Se implementará un controlador en python para manipular los actuadores y observ
 # Cómo ejecutar la simulación en Webots
 
 # Resultados obtenidos
+
+* $v_{r} = v + \frac{\omega \cdot L}{2}$
+* $v_{l} = v - \frac{\omega \cdot L}{2}$
