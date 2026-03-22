@@ -5,10 +5,6 @@ robot = Robot()
 
 timestep = int(robot.getBasicTimeStep())
 
-# Esto es para seguir la trayectoria del robot
-pen = robot.getDevice('pen')
-pen.write(1)
-
 left_motor = robot.getDevice('left wheel motor')
 right_motor = robot.getDevice('right wheel motor')
 
@@ -17,10 +13,14 @@ left_motor.setPosition(float('inf'))
 right_motor.setPosition(float('inf'))
 
 # Main loop:
+L = 0.052 # Distancia entre las ruedas
 while robot.step(timestep) != -1:
 
-    vl = 3.0 # velocidad en el motor izquierdo
-    vr = 3.0 # velocidad en el motor derecho
+    v = 4
+    w = 30
+
+    vl = v + (w * L) / 2 # velocidad en el motor izquierdo
+    vr = v - (w * L) / 2 # velocidad en el motor derecho
     
     left_motor.setVelocity(vl)
     right_motor.setVelocity(vr)
