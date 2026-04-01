@@ -30,8 +30,8 @@ while robot.step(timestep) != -1:
     vl = v + (w * L) / 2 # velocidad en el motor izquierdo
     vr = v - (w * L) / 2 # velocidad en el motor derecho
     
-    perturbacion_l = random.uniform(-5, 5)
-    perturbacion_r = random.uniform(-5, 5)
+    perturbacion_l = random.uniform(0, 0)
+    perturbacion_r = random.uniform(0, 0)
     
     left_motor.setVelocity(vl + perturbacion_l)
     right_motor.setVelocity(vr + perturbacion_r)
