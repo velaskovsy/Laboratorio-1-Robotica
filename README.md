@@ -56,32 +56,39 @@ Así tomamos un modelo de ensayo y error basado en la velocidad lineal y angular
    - Dependiendo de las velocidades configuradas en el controlador
 
 7. Para repetir la simulación:
-   - Presionar "Reset" y luego "Play" nuevamente
+   - Presionar "Reset" y luego "Play"
 
 # Resultados obtenidos
-Luego de haber llevado a cabo los experimentos en el simulador Webots, se dieron a conocer los datos obtenidos con el modelo cinemático diferencial. Posteriormente se presentan, como resultado de la resolución de las preguntas de análisis presentadas en la guía del laboratorio:
+Luego de haber llevado a cabo los experimentos en el simulador Webots, se dieron a conocer los resultados obtenidos con el modelo cinemático diferencial. A continuación, la resolución de las preguntas de análisis planteadas en la guía del laboratorio:
 
-1. ¿Qué ocurre cuando ambas ruedas tienen la misma velocidad?
-	- Lo que ocurre cuando ambas ruedas tienen la misma velocidad es que el robot toma 	una trayectoria en línea recta. Eso se explica ya que, según el modelo cinemático, 	cuando las velocidades de la rueda izquierda y derecha son iguales, la velocidad 	angular valdría 0. Así el robot tomaría una trayectoria lineal.
-			
-    - Para obtener este resultado simplemente se modificaron las variables v, colocando 	el valor de 2, y el valor de w, colocando el valor 0.
+# 1. ¿Qué ocurre cuando ambas ruedas tienen la misma velocidad?
+	Lo que ocurre es que el robot toma una trayectoria en línea recta. Eso se debe a que, según el modelo cinemático, la velocidad angular es igual a cero, por lo que no existe rotación.
+				
+	Para obtener este resultado, se modificaron las variables v, colocando el valor de v = 2, y el valor de ω, a ω = 0.
 
-2. ¿Cómo cambia la trayectoria cuando las velocidades son diferentes?
-	- Al cambiar la velocidad de una rueda del e-puck, este toma una trayectoria curva.	Eso pasa debido a que una rueda va a tener más tracción o en este caso velocidad	que la otra, obligando al robot a desviarse. 
-Si lo vemos del lado del modelo cinemático, con las fórmulas modificadas	para el		controlador, al cambiar el valor de w va a ocurrir que ambas velocidades			cambien. Además según la fórmula de la velocidad angular, las velocidades al no ser	iguales se define que tan cerrada va a ser la curva.
+# 2. ¿Cómo cambia la trayectoria cuando las velocidades son diferentes?
+	Cuando las velocidades de las ruedas son distintas, el robot describe una trayectoria curva. Esto ocurre porque una rueda avanza más rápido que la otra, generando un cambio continuo en la dirección del movimiento.
+	
+	Desde el modelo cinemático, esta diferencia se produce al modificar el valor de la velocidad angular (ω), lo que provoca que las velocidades de ambas ruedas cambien. Además, la magnitud de esta diferencia determina qué tan cerrada o abierta será la curva.
 
-3. ¿Qué ocurre cuando una rueda gira en sentido opuesto a la otra?
-	- Cuando una rueda gira en sentido opuesta a la otra simplemente el robot empieza a 	girar sobre su propio eje. Eso se explica ya que en el modelo adaptado si colocamos 	el valor de la velocidad lineal en 0, lo que hace que el producto entre w y L sea 		positivo para la rueda izquierda y negativo para la rueda derecha, ocasionando que 	el robot gire sobre su propio eje.
+# 3. ¿Qué ocurre cuando una rueda gira en sentido opuesto a la otra?
+	Cuando una rueda gira en sentido opuesta a la otra, el robot empieza rota sobre su propio eje. En este caso, la velocidad lineal es cero y solo existe movimiento angular.
+	
+	Esto se logra configurando (v = 0), lo que genera velocidades opuestas en cada rueda según el modelo, provocando la rotación en el lugar.
 
-4. ¿Qué tipo de movimiento permite dibujar un círculo?
-	- Para dibujar un círculo hay que tener en cuenta que el robot no necesita que las 		velocidades entre las ruedas sean iguales y que exista una velocidad angular 		constante. Entonces necesitamos una diferencia entre la velocidad de las ruedas 	que no varíe, así se podrá formar un movimiento circular constante.
+# 4. ¿Qué tipo de movimiento permite dibujar un círculo?
+	Para que el robot describa un movimiento circular, es necesario que exista una diferencia constante entre las velocidades de ambas ruedas, junto con una velocidad angular constante.
+	Esto permite que el robot mantenga una trayectoria curva uniforme, formando un círculo.
 
-## Info Encoder
-Los encoders miden la posición angular acumulada en Radianes, es decir, cuanto ha girado la rueda desde que se encendió el robot. Si el número sube la rueda gira hacia adelante, si baja es porque la rueda gira hacia atrás
-
-Como parte de los resultados obtenidos, para la realización de esta prueba el robot giro en una trayectoria circular, así que la rueda de la izquierda gira más rápido que la derecha, por eso los datos de la rueda izquierda son mayores que los de la derecha. Los valores que se ocuparon fueron v = 4 y w = 30.
-
-Según el modelo, la distancia que recorre cada rueda en cada debe ser siempre la misma.
+## Análisis de Encoder
+	Los encoders miden la posición angular acumulada de cada rueda en radianes, es decir, cuanto ha girado la rueda desde que se encendió el robot. 
+	
+	* Si el valor aumenta → la rueda gira hacia adelante, 
+	* Si el valor disminuye → es porque la rueda gira hacia atrás
+	
+	 Para este análisis, se evaluó el comportamiento del robot en una trayectoria circular, lo que permitió observar diferencias entre ambas ruedas. En este caso, la rueda izquierda presenta valores mayores que la derecha, debido a que gira a mayor velocidad. Los valores que se ocuparon fueron v = 4 y w = 30.
+	
+	Según el modelo, la distancia que recorre cada rueda en cada debe ser siempre la misma.
 
 **Sin perturbaciones**
 1. Encoder de la Izquierda: 9820.94 - Encoder de la Derecha: 7657.28
@@ -110,9 +117,28 @@ Según el modelo, la distancia que recorre cada rueda en cada debe ser siempre l
 ### Resultados de perturbaciones
 
 **Sin perturbaciones** 
-- El movimiento es fluido, constante y predecible. La diferencia entre la izquierda y la derecha se mantiene estable debido a que no hay ruido ni agentes externos que perturben al robot. Viéndolo del lado del modelo cinemático y según los datos entregados, si restamos los datos dados, tipo el presente menos el dato anterior, daría un paso aproximado de 0.16 o 0.15 para la rueda derecha y de 0.10 aproximadamente para la rueda izquierda. Por lo que podríamos decir que respeta el modelo cinemático, fundamentando con esto y lo dicho el el tercer párrafo del apartado Info Encoder.
+	En condiciones ideales, el movimiento del robot es fluido, constante y predecible.
+	
+	A partir de los datos obtenidos, se observa que los valores de los encoders aumentan de forma progresiva. Si se analiza la diferencia entre mediciones consecutivas (valor actual menos el anterior), se obtiene un incremento aproximadamente constante:
+	
+	* La rueda derecha presenta incrementos cercanos a 0.15 – 0.16
+	* La rueda izquierda presenta incrementos cercanos a 0.10
+	
+	Esto indica que ambas ruedas mantienen una velocidad estable en el tiempo. Además, la diferencia constante entre las velocidades de las ruedas explica la trayectoria circular observada.
+	
+	Este comportamiento es consistente con el modelo cinemático diferencial, ya que velocidades constantes generan un movimiento predecible.
 
 **Con perturbaciones**
-- El movimiento es turbulento y los datos muestran inconsistencias en el avance. Se observan variaciones que no son lineales como en el otro caso,  donde los encoders incluso registran retrocesos o estancamientos momentáneos. Así podemos concluir que el movimiento con perturbaciones rompe la trayectoria con el robot desviándose un poco.
+	Al introducir perturbaciones aleatorias en las velocidades de las ruedas, el comportamiento del robot cambia significativamente.
+	
+	A diferencia del caso anterior, los valores de los encoders no presentan incrementos constantes. Al analizar las diferencias entre mediciones consecutivas, se observan variaciones irregulares:
+	
+	* Los incrementos dejan de ser uniformes
+	* Existen pequeñas fluctuaciones en el avance
+	* En algunos casos se presentan desaceleraciones momentáneas
+	
+	Esto provoca que el movimiento del robot sea menos estable, generando desviaciones respecto a la trayectoria esperada.
+	
+	En este caso, el sistema deja de seguir el modelo cinemático ideal, evidenciando la influencia de perturbaciones en los actuadores.
 
 
